@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lab1</title>
+<style>
+  body {
+    background-color: #CDFFF0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  #figure_canvas {
+    position: relative;
+    width: 900px; /* Adjust the width as needed */
+    height: 600px; /* Adjust the height as needed */
+    margin: 0 auto; /* Center the figure_canvas horizontally */
+    overflow: hidden;
+  }
+  #canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+<script src="https://webgl2fundamentals.org/webgl/resources/m4.js"></script>
+<script src="./main.js"></script>
+</head>
+<body onload="init()">
+  <audio src="track.mp3" controls id="audio"></audio>
+  <br>
+  <span id="title">Filter</span>
+  <input type="checkbox" id="boxFilter">
+<h1>Surface of Revolution of a Parabola of Arbitrary Position</h1>
+<div id="figure_canvas">
+   <video id="video" autoplay loop muted></video>
+    <canvas width="900" height="600" id="canvas"></canvas>
+</div> 
+<div>
+  <form oninput="result1.value=parseInt(eye.value)">
+   <input type="range" id="eye_sep" min="1" name="eye" max="200" value="50" onchange="handleEyeSeparationChange()">
+   <label for="eye_sep">Eye separation</label>
+   (<output name="result1">50</output>)
+ </form>
+ <form oninput="result2.value=parseInt(FOV.value)">
+   <input type="range" id="FOV" min="50" name="FOV" max="120" value="90" onchange="handleFieldOfViewChange()">
+   <label for="FOV">Field of View</label>
+   (<output name="result2">90</output>)
+ </form>
+ <form oninput="result3.value=parseInt(NCD.value)">
+   <input type="range" id="NCD" min="1" name="NCD" max="20" value="1" onchange="handleNearClipDistanceChange()">
+   <label for="NCD">Near Clip Distance</label>
+   (<output name="result3">1</output>)
+ </form>
+ <form oninput="result4.value=parseInt(conver.value)">
+   <input type="range" id="conver" min="500" name="convergence" max="5000" value="2000" onchange="handleConvergenceChange()">
+   <label for="conver">Convergence Distance</label>
+   (<output name="result4">2000</output>)
+ </form>
+</div>
+<div>
+   <input type="checkbox" id="Wired" onchange="handleCheckboxChange()">
+   <label for="Wired">Wired</label>
+</div>
+</body>
+</html>
